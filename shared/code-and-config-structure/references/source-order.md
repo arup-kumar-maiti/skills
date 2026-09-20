@@ -10,10 +10,10 @@ Order a normal source file as follows, omitting sections that do not apply:
 4. Types, interfaces, schemas, enums, and data models.
 5. Constants and immutable configuration.
 6. Public classes, functions, and exported API.
-7. Entrypoint or startup code.
-8. Private or internal helpers.
+7. Private or internal helpers.
+8. Entrypoint function and startup code.
 
-Put an executable entrypoint before the private helpers it calls. In a library module without an entrypoint, put private helpers after their public callers.
+In a library module without startup code, put private helpers after their public callers. In an executable module, follow the language or repository convention when one exists. Otherwise, put its entrypoint function after the helpers required by its startup path and put the code that invokes it last.
 
 ## Constants and Types
 
@@ -45,7 +45,7 @@ Apply these rules in order; stop at the first that distinguishes items:
 
 Put an explicit public facade before the public services it coordinates.
 
-For classes and equivalent types, use this member order when applicable:
+For classes and equivalent types, follow the language or repository member-order convention when one exists. Otherwise use this member order when applicable:
 
 1. Type-level constants and static configuration.
 2. Constructors and lifecycle initialization.
