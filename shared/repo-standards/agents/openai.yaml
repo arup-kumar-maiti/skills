@@ -1,0 +1,6 @@
+interface:
+  display_name: "repo-standards"
+  short_description: "Reconcile managed repository checks"
+  default_prompt: "Use $repo-standards to set up or reconcile this repository's managed checks."
+policy:
+  allow_implicit_invocation: true

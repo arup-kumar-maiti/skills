@@ -1,6 +1,0 @@
-interface:
-  display_name: "repo-foundation"
-  short_description: "Set up or refresh managed formatting, linting, commit, and CI checks"
-  default_prompt: "Use $repo-foundation to set up or refresh managed formatting, linting, Conventional Commit, and changed-file CI checks."
-policy:
-  allow_implicit_invocation: false
