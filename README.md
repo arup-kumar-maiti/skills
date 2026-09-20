@@ -23,15 +23,15 @@ Use the client’s normal mechanism to make each installed skill invocable. When
 Clean up temporary files and report installed, refreshed, and skipped skills.
 ```
 
-To install one skill, replace “every skill” with its directory name, such as `repo-foundation`.
+To install one skill, replace “every skill” with its directory name, such as `repo-standards`.
 
 ## Use
 
 Invoke a skill by name:
 
-- Claude Code: `/repo-foundation`
-- Codex: `$repo-foundation`
-- Cursor: `/repo-foundation`
+- Claude Code: `/repo-standards`
+- Codex: `$repo-standards`
+- Cursor: `/repo-standards`
 
 ## Uninstall
 
@@ -45,4 +45,4 @@ Remove only skill directories whose `.agent-skills-origin` contains `https://git
 Preserve everything else. Clean up temporary files and report removed and skipped skills.
 ```
 
-To uninstall one skill, replace “every skill” with its directory name, such as `repo-foundation`.
+To uninstall one skill, replace “every skill” with its directory name, such as `repo-standards`.

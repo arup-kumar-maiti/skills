@@ -2,13 +2,22 @@
 
 Apply these after language and tool selection is confirmed.
 
+## Managed Files
+
+1. Mark every formatter/linter configuration and pull-request workflow created by this skill with `Managed by repo-standards`, using the file format's comment syntax.
+2. On a later run, regenerate a marked file from the complete selected suite.
+3. Add needed configuration and remove obsolete managed hooks, dependencies, and workflow steps.
+4. If a marked file's rendered content is unchanged, do not modify it.
+5. Treat an unmarked existing formatter/linter configuration or pull-request workflow as user-owned. Ask before replacing or merging a conflict.
+6. Update `.gitignore` only by adding required entries; never mark or regenerate it.
+
 ## Prerequisites
 
 1. Ensure Git, Python, and Cocogitto are available. If any are absent, present the required machine-level installation commands together and obtain one confirmation before running them.
 
 ## Managed Hooks
 
-1. Use `.pre-commit-config.yaml` as the single formatter and linter hook configuration. Preserve a compatible existing configuration; otherwise ask before replacing or merging it. Treat another manager for `pre-commit` or `commit-msg` as a conflict.
+1. Use `.pre-commit-config.yaml` as the single formatter and linter hook configuration. Treat another manager for `pre-commit` or `commit-msg` as a conflict.
 2. Configure every formatter and linter in a managed pre-commit environment with its exact stable version pinned. Prefer a maintained external hook repository. When a compatible maintained hook is unavailable, use `repo: local` with a managed language and pinned `additional_dependencies`; do not use `language: system` for those tools.
 3. Let each hook's `types`, `types_or`, or `files` selector limit it to its matching selected files. Use `.gitignore` as a discovery signal, not hook configuration. Set a global `exclude` for detected tracked generated, vendored, dependency, build-output paths, and lockfiles without excluding first-party files.
 4. Reuse one formatter hook for every selected file type that its tool supports.
