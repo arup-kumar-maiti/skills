@@ -11,9 +11,12 @@ Install every skill in the `shared/` directory of https://github.com/arup-kumar-
 
 Use the client’s normal user-level skill location when available; otherwise use its normal project location. Copy each skill directory unchanged.
 
-For a same-name skill directory:
-- Refresh it only when its `.agent-skills-origin` contains `https://github.com/arup-kumar-maiti/skills`.
+For each selected skill, classify its target directory independently:
+- If it is absent, install it.
+- If its `.agent-skills-origin` contains `https://github.com/arup-kumar-maiti/skills`, refresh it.
 - Otherwise preserve it and report a conflict.
+
+For a refresh, first copy and verify the replacement in a sibling temporary directory, then replace the marked target directory. Never copy a skill directory into an existing target directory or leave a nested skill directory.
 
 Use the client’s normal mechanism to make each installed skill invocable. When a command wrapper is required, mark it with `<!-- agent-skills-origin: https://github.com/arup-kumar-maiti/skills -->`.
 
