@@ -8,8 +8,11 @@ Apply these after language and tool selection is confirmed.
 2. On a later run, regenerate a marked file from the complete selected suite.
 3. Add needed configuration and remove obsolete managed hooks, dependencies, and workflow steps.
 4. If a marked file's rendered content is unchanged, do not modify it.
-5. Treat an unmarked existing formatter/linter configuration or pull-request workflow as user-owned. Ask before replacing or merging a conflict.
-6. Update `.gitignore` only by adding required entries; never mark or regenerate it.
+5. When generated configuration fails a selected formatter or linter, first change that configuration to satisfy the baseline.
+6. If documented syntax or tool compatibility makes that impossible, use the narrowest file- and rule-specific exception and explain it beside the exception.
+7. Preserve every unrelated baseline rule. Never relax a global rule solely to pass generated output.
+8. Treat an unmarked existing formatter/linter configuration or pull-request workflow as user-owned. Ask before replacing or merging a conflict.
+9. Update `.gitignore` only by adding required entries; never mark or regenerate it.
 
 ## Prerequisites
 
@@ -19,7 +22,7 @@ Apply these after language and tool selection is confirmed.
 
 1. Use `.pre-commit-config.yaml` as the single formatter and linter hook configuration. Treat another manager for `pre-commit` or `commit-msg` as a conflict.
 2. Configure every formatter and linter in a managed pre-commit environment with its exact stable version pinned. Prefer a maintained external hook repository. When a compatible maintained hook is unavailable, use `repo: local` with a managed language and pinned `additional_dependencies`; do not use `language: system` for those tools.
-3. Let each hook's `types`, `types_or`, or `files` selector limit it to its matching selected files. Use `.gitignore` as a discovery signal, not hook configuration. Set a global `exclude` for detected tracked generated, vendored, dependency, build-output paths, and lockfiles without excluding first-party files.
+3. Let each hook's `types`, `types_or`, or `files` selector limit it to its matching selected files. Use `.gitignore` as a discovery signal, not hook configuration. Set a global `exclude` for generated, vendored, dependency, build-output paths, and lockfiles from `git ls-files` without excluding first-party files.
 4. Reuse one formatter hook for every selected file type that its tool supports.
 5. For each formatter, configure a writing `pre-commit` hook and a matching non-mutating `manual`-stage check hook.
 6. Run linters without auto-fixing. Within each language, place formatting before linting; place the Conventional Commit hook last.
