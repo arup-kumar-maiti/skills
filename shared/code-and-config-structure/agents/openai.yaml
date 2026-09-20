@@ -1,0 +1,6 @@
+interface:
+  display_name: "code-and-config-structure"
+  short_description: "Verify reader-first code and configuration order"
+  default_prompt: "Use $code-and-config-structure to verify reader-first order in changed code and configuration before reporting completion."
+policy:
+  allow_implicit_invocation: true
