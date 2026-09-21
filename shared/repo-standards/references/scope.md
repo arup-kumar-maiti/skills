@@ -1,7 +1,7 @@
 # Scope
 
 1. Build the candidate file list from every available regular working-tree file. Do not use Git tracking state or follow symlinks.
-2. Honor repository ignore files. Exclude `.git/`, generated, vendored, dependency, build-output, cache, virtual-environment, and lockfile paths.
+2. Every candidate-file discovery pass must honor repository ignore files and exclude `.git/`, generated, vendored, dependency, build-output, cache, virtual-environment, and lockfile paths.
 3. Keep repo-standards-managed files in the candidate list so their formats can expand the selected suite.
 4. Inspect before modifying anything:
    - root and workspace-level package/build manifests, lockfiles, and language configuration from the working tree;
