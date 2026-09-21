@@ -1,6 +1,6 @@
 ---
 name: repo-standards
-description: "Reconcile managed repository formatting, linting, Conventional Commit, and changed-file CI checks when establishing these checks or when a task changes the tracked language or authored-format scope."
+description: "Use when establishing or reconciling repository formatting, linting, Conventional Commit, or changed-file CI checks, including after a task adds or removes a language or authored format."
 ---
 
 # Repo Standards

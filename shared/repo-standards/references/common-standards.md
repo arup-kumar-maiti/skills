@@ -13,22 +13,38 @@ Apply these after language and tool selection is confirmed.
 7. Preserve every unrelated baseline rule. Never relax a global rule solely to pass generated output.
 8. Treat an unmarked existing formatter/linter configuration or pull-request workflow as user-owned. Ask before replacing or merging a conflict.
 9. Update `.gitignore` only by adding required entries; never mark or regenerate it.
+10. In managed YAML, omit optional `name` fields.
+11. Retain workflow and job labels in generated CI workflows, and every `name` field required by its owning schema.
 
 ## Prerequisites
 
-1. Ensure Git, Python, and Cocogitto are available. If any are absent, present the required machine-level installation commands together and obtain one confirmation before running them.
+1. Verify that Git, Python, and Cocogitto are available.
+2. If any are absent, present the required machine-level installation commands together.
+3. Obtain one confirmation before running those commands.
 
 ## Managed Hooks
 
 1. Use `.pre-commit-config.yaml` as the single formatter and linter hook configuration. Treat another manager for `pre-commit` or `commit-msg` as a conflict.
-2. Configure every formatter and linter in a managed pre-commit environment with its exact stable version pinned. Prefer a maintained external hook repository. When a compatible maintained hook is unavailable, use `repo: local` with a managed language and pinned `additional_dependencies`; do not use `language: system` for those tools.
-3. Let each hook's `types`, `types_or`, or `files` selector limit it to its matching selected files. Use `.gitignore` as a discovery signal, not hook configuration. Set a global `exclude` for generated, vendored, dependency, build-output paths, and lockfiles from `git ls-files` without excluding first-party files.
-4. Reuse one formatter hook for every selected file type that its tool supports.
-5. For each formatter, configure a writing `pre-commit` hook and a matching non-mutating `manual`-stage check hook.
-6. Run linters without auto-fixing. Within each language, place formatting before linting; place the Conventional Commit hook last.
-7. If formatting changes files during a commit, let pre-commit abort it so the developer can review and stage the changes. Never auto-stage files.
-8. Ensure `pre-commit` is available through an existing project Python environment; otherwise create `.venv` with `python -m venv`, add `.venv/` to `.gitignore`, and install `pre-commit` there. Do not install language tooling globally.
-9. Install the hooks with `pre-commit install --install-hooks --hook-type pre-commit --hook-type commit-msg`.
+2. Configure every formatter and linter in a managed pre-commit environment with its exact stable version pinned.
+3. Prefer a maintained external hook repository.
+4. When a compatible maintained hook is unavailable, use `repo: local` with a managed language and pinned `additional_dependencies`.
+5. Do not use `language: system` for formatter or linter hooks.
+6. Let each hook's `types`, `types_or`, or `files` selector limit it to its matching selected files.
+7. Use `.gitignore` as a discovery signal, not hook configuration.
+8. Set a global `exclude` for generated, vendored, dependency, build-output paths, and lockfiles from the candidate file list without excluding first-party files.
+9. Reuse one formatter hook for every selected file type that its tool supports.
+10. Set every writing formatter hook's `stages` to `[pre-commit]`.
+11. Set every matching non-mutating formatter-check hook's `stages` to `[manual]`.
+12. Set every linter hook's `stages` to `[pre-commit, manual]`.
+13. Run linters without auto-fixing.
+14. Within each language, place formatting before linting; place the Conventional Commit hook last.
+15. If formatting changes files during a commit, let pre-commit abort it so the developer can review and stage the changes. Never auto-stage files.
+16. Use an existing project Python environment for `pre-commit` when one is available.
+17. Otherwise create `.venv` with `python -m venv`.
+18. Add `.venv/` to `.gitignore`.
+19. Install `pre-commit` in the selected project Python environment.
+20. Do not install language tooling globally.
+21. Install the hooks with `pre-commit install --install-hooks --hook-type pre-commit --hook-type commit-msg`.
 
 ## Commit Messages
 
