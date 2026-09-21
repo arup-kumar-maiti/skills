@@ -1,0 +1,8 @@
+# Managed by repo-standards.
+rules:
+  truthy:
+    # GitHub Actions uses `on` as a required top-level key.
+    allowed-values:
+      - "true"
+      - "false"
+      - "on"

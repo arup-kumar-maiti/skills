@@ -1,0 +1,4 @@
+# Managed by repo-standards.
+MD013: false # Prettier preserves Markdown prose line breaks instead of wrapping them.
+MD029: false # Skill instructions retain numbering across separated rule sections.
+MD041: false # GitHub pull-request templates conventionally begin with a section heading.

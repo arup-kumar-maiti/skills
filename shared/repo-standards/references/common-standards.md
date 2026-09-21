@@ -69,9 +69,9 @@ Apply these after language and tool selection is confirmed.
 12. Check Conventional Commits only in the pull request's `<base-sha>..<head-sha>` range; do not validate older history.
 13. Run:
 
-   ```sh
-   pre-commit run --hook-stage manual --from-ref <base-sha> --to-ref <head-sha>
-   ```
+```sh
+pre-commit run --hook-stage manual --from-ref <base-sha> --to-ref <head-sha>
+```
 
 14. Do not add a full-program type check such as `tsc --noEmit`.
 
