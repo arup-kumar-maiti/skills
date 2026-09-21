@@ -1,0 +1,53 @@
+# Managed by repo-standards.
+exclude: >-
+  (?x)^(?:
+    (?:.*/)?(?:build|coverage|dist|node_modules|vendor|\.venv)(?:/|$)|
+    (?:.*\.(?:lock)|(?:^|/)(?:Pipfile|package|pnpm|poetry|yarn)-lock\.(?:json|ya?ml))$
+  )
+repos:
+  - repo: local
+    hooks:
+      - id: prettier
+        name: Prettier
+        entry: prettier --write
+        language: node
+        additional_dependencies:
+          - prettier@3.9.6
+        types_or:
+          - markdown
+          - yaml
+        stages:
+          - pre-commit
+      - id: prettier-check
+        name: Prettier check
+        entry: prettier --check
+        language: node
+        additional_dependencies:
+          - prettier@3.9.6
+        types_or:
+          - markdown
+          - yaml
+        stages:
+          - manual
+  - repo: https://github.com/igorshubovych/markdownlint-cli
+    rev: v0.49.1
+    hooks:
+      - id: markdownlint
+        stages:
+          - pre-commit
+          - manual
+  - repo: https://github.com/adrienverge/yamllint
+    rev: v1.38.0
+    hooks:
+      - id: yamllint
+        stages:
+          - pre-commit
+          - manual
+  - repo: local
+    hooks:
+      - id: conventional-commits
+        name: Conventional Commits
+        entry: cog verify --file
+        language: system
+        stages:
+          - commit-msg
