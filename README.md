@@ -9,6 +9,8 @@ Paste this into Claude Code, Codex, or Cursor:
 ```text
 Install every skill in the `shared/` directory of https://github.com/arup-kumar-maiti/skills for this client.
 
+Derive the selected skills from every immediate directory under the downloaded `shared/` directory. Do not hardcode skill names.
+
 Use the client’s normal user-level skill location when available; otherwise use its normal project location. Copy each skill directory unchanged.
 
 For each selected skill, classify its target directory independently:
@@ -39,6 +41,8 @@ Paste this into Claude Code, Codex, or Cursor:
 
 ```text
 Uninstall every skill from https://github.com/arup-kumar-maiti/skills for this client.
+
+Derive removal targets by scanning the client skill location for the repository origin marker. Do not hardcode skill names.
 
 Remove only skill directories whose `.agent-skills-origin` contains `https://github.com/arup-kumar-maiti/skills` and only command wrappers marked `<!-- agent-skills-origin: https://github.com/arup-kumar-maiti/skills -->`.
 
