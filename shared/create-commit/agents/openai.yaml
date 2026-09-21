@@ -1,0 +1,6 @@
+interface:
+  display_name: "create-commit"
+  short_description: "Create Conventional Commits"
+  default_prompt: "Use $create-commit to commit current changes."
+policy:
+  allow_implicit_invocation: true
