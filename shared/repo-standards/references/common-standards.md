@@ -82,3 +82,4 @@ pre-commit run --hook-stage manual --from-ref <base-sha> --to-ref <head-sha>
 3. If a relevant first-party file is already staged, run `pre-commit run --hook-stage pre-commit`.
 4. Never create a test commit or auto-stage files. If no suitable staged file exists, report that end-to-end hook verification is pending the next normal commit.
 5. Do not weaken rules to hide existing failures.
+6. Report each selected local check blocked by an unavailable optional machine-level runtime. Do not install that runtime or request confirmation.
