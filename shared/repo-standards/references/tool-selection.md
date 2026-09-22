@@ -14,5 +14,5 @@ Apply this to the complete detected or explicitly requested scope, not separatel
 10. Use the tool's stable comprehensive baseline: its documented recommended rules when that is the maintained standard, or its explicit all-rules option when the tool provides one intended for normal use. Do not enable an unstable `all` preset merely because it is named `all`.
 11. A parser-only syntax check is not a linter; add one only when it covers a gap in the selected linter.
 12. Configure only documented, intentional exclusions. Keep generated, vendored, dependency, build-output paths, and lockfiles out of hooks; keep all first-party source, configuration, and documentation in scope.
-13. For tools needing a runtime that pre-commit cannot bootstrap, provision the repository's established runtime; if none is established, use that tool's standard project-local setup without asking the user.
+13. Declare every runtime that pre-commit cannot bootstrap in repository and CI configuration. If an optional machine-level runtime is unavailable locally, do not install it or request confirmation; report the pending local check after verification.
 14. If no maintained formatter or linter can be safely selected, report that language or format and do not invent a tool or configuration.
