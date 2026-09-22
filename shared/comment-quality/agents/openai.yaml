@@ -1,0 +1,6 @@
+interface:
+  display_name: "comment-quality"
+  short_description: "Keep comments, including docstrings, useful and compliant"
+  default_prompt: "Use $comment-quality to review comments, including docstrings, in changed or named files before reporting completion."
+policy:
+  allow_implicit_invocation: true
