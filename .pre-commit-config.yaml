@@ -14,6 +14,7 @@ repos:
         additional_dependencies:
           - prettier@3.9.6
         types_or:
+          - json
           - markdown
           - yaml
         stages:
@@ -25,6 +26,7 @@ repos:
         additional_dependencies:
           - prettier@3.9.6
         types_or:
+          - json
           - markdown
           - yaml
         stages:
